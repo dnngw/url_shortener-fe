@@ -1,12 +1,9 @@
-import { useState } from 'react'
-
+import AppRouter from "./routes/router"
 
 function App() {
 
   return (
-    <>
-      <p>Hello World</p>
-    </>
+    <AppRouter/>    
   )
 }
 

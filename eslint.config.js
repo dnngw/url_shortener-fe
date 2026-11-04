@@ -5,7 +5,8 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  // shadcn generated files (overwritten by `npx shadcn add`)
+  globalIgnores(['dist', 'src/components/ui', 'src/hooks/use-mobile.js']),
   {
     files: ['**/*.{js,jsx}'],
     extends: [

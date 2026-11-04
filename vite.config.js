@@ -17,7 +17,9 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      '/api': 'http://localhost:8080',
+      // Same routing as production: /app = frontend (Vite), everything else = backend
+      // (/api/... and short codes like /promo-2026). A key starting with ^ is a RegExp
+      '^/(?!app(/|$))': 'http://localhost:8080',
     },
   },
 })
