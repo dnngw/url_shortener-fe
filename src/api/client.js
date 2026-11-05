@@ -2,6 +2,10 @@ import { tokenStorage, notifySessionExpired } from '@/lib/token'
 
 const BASE_URL = import.meta.env.VITE_API_URL
 
+// ngrok free answers browser requests with an HTML warning page (no CORS headers)
+// unless this header is present. Harmless for any other backend.
+const DEFAULT_HEADERS = { 'ngrok-skip-browser-warning': 'true' }
+
 // Error from API, keep http status so the UI can react (ex: 409 → field error)
 export class ApiError extends Error {
   constructor(message, status) {
@@ -21,6 +25,7 @@ export function refreshAccessToken() {
     refreshPromise = fetch(`${BASE_URL}/auth/refresh`, {
       method: 'POST',
       credentials: 'include',   // send cookie refresh token
+      headers: DEFAULT_HEADERS,
     })
       .then(async (res) => {
         if (!res.ok) throw new ApiError('Session ended', res.status);
@@ -43,6 +48,7 @@ function request(endpoint, { body, headers, ...options }) {
     ...options,
     credentials: 'include',
     headers: {
+      ...DEFAULT_HEADERS,
       ...(body && { 'Content-Type': 'application/json' }),
       ...(token && { Authorization: `Bearer ${token}` }),
       ...headers,
