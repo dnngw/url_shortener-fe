@@ -10,6 +10,10 @@ export default defineConfig({
     tailwindcss()
   ],
   base: '/app/',
+  build: {
+    outDir: "dist/app",
+    emptyOutDir: true,
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
