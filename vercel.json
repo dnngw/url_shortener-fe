@@ -4,6 +4,6 @@
   ],
   "rewrites": [
     { "source": "/app/:path*", "destination": "/app/index.html" },
-    { "source": "/:code", "destination": "/app/index.html" }
+    { "source": "/:code", "destination": "https://sprawl-crimp-unbundle.ngrok-free.dev/:code" }
   ]
 }
