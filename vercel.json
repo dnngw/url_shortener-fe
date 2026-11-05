@@ -1,9 +1,0 @@
-{
-  "redirects": [
-    { "source": "/", "destination": "/app/", "permanent": false }
-  ],
-  "rewrites": [
-    { "source": "/app/:path*", "destination": "/app/index.html" },
-    { "source": "/:code", "destination": "https://sprawl-crimp-unbundle.ngrok-free.dev/:code" }
-  ]
-}
